@@ -72,7 +72,7 @@
                 <a href="{% url 'post_draft_list' %}" class="top-menu" style="padding-left: 20px;">
                     <span class="glyphicon glyphicon-edit"></span>
                 </a>
-                <p class="top-menu" style="padding-left: 50px;">Hello "{{ user.username }}" </p>
+                <p class="top-menu" style="padding-left: 50px;">Hello, "{{ user.username }}" </p>
                 
                 {% else %}
                 <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
