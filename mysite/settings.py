@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+from decouple import config
 from pathlib import Path
 import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-#e&bi6zg@lnxy34ly3d&o7eg&$oan3jue+c4f6a(=2rukvxub='
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config("DEBUG", cast=bool)
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -81,7 +81,7 @@ DATABASES = {
     }
 }
 
-DATABASES["default"] = dj_database_url.parse("postgresql://djangogirls_bkfd_user:xsbowhiz0ld9tJpTAGlc24D7ksb1g32K@dpg-crfffp5ds78s73cm43mg-a.singapore-postgres.render.com/djangogirls_bkfd")
+DATABASES["default"] = dj_database_url.parse(config("DATABASE_URL"))
 
 
 # Password validation
